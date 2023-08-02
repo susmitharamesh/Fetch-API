@@ -1,0 +1,37 @@
+
+body
+{
+    background-image:url("pokemon.jpg");
+    background-repeat:no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    
+    
+}.container
+{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  
+}
+h2{
+    color:white;
+    text-transform: uppercase;
+    background-color: rgb(32, 229, 62);
+}
+#pokemon
+{
+    width: fit-content;
+    height:50px;
+    font-size: 20px;
+    padding: 5px;
+    color:rgb(81, 0, 255);
+    border-radius: 10px;
+    background-color: rgba(255, 228, 196, 0.686);
+    
+}
+option:nth-child(even){
+    background-color: rgba(235, 185, 174, 0.657);
+    color:rgb(244, 127, 146);
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+  <h2>Pokemon</h2>
+  <select id="pokemon" name="Pokemon">
+
+  </select> 
+  </div>
+  <script>
+//     let name=document.getElementById("pokemon")
+  
+
+//     const data = [{
+//   "name": "stench",
+//   "url": "https://pokeapi.co/api/v2/ability/1/"
+// }, {
+//   "name": "drizzle",
+//   "url": "https://pokeapi.co/api/v2/ability/2/"
+// }, {
+//   "name": "speed-boost",
+//   "url": "https://pokeapi.co/api/v2/ability/3/"
+// }, {
+//   "name": "battle-armor",
+//   "url": "https://pokeapi.co/api/v2/ability/4/"
+// }, {
+//   "name": "sturdy",
+//   "url": "https://pokeapi.co/api/v2/ability/5/"
+// }, {
+//   "name": "damp",
+//   "url": "https://pokeapi.co/api/v2/ability/6/"
+// }, {
+//   "name": "limber",
+//   "url": "https://pokeapi.co/api/v2/ability/7/"
+// }, {
+//   "name": "sand-veil",
+//   "url": "https://pokeapi.co/api/v2/ability/8/"
+// }, {
+//   "name": "static",
+//   "url": "https://pokeapi.co/api/v2/ability/9/"
+// }, {
+//   "name": "volt-absorb",
+//   "url": "https://pokeapi.co/api/v2/ability/10/"
+// }, {
+//   "name": "water-absorb",
+//   "url": "https://pokeapi.co/api/v2/ability/11/"
+// }, {
+//   "name": "oblivious",
+//   "url": "https://pokeapi.co/api/v2/ability/12/"
+// }, {
+//   "name": "cloud-nine",
+//   "url": "https://pokeapi.co/api/v2/ability/13/"
+// }, {
+//   "name": "compound-eyes",
+//   "url": "https://pokeapi.co/api/v2/ability/14/"
+// }, {
+//   "name": "insomnia",
+//   "url": "https://pokeapi.co/api/v2/ability/15/"
+// }, {
+//   "name": "color-change",
+//   "url": "https://pokeapi.co/api/v2/ability/16/"
+// }, {
+//   "name": "immunity",
+//   "url": "https://pokeapi.co/api/v2/ability/17/"
+// }, {
+//   "name": "flash-fire",
+//   "url": "https://pokeapi.co/api/v2/ability/18/"
+// }, {
+//   "name": "shield-dust",
+//   "url": "https://pokeapi.co/api/v2/ability/19/"
+// }, {
+//   "name": "own-tempo",
+//   "url": "https://pokeapi.co/api/v2/ability/20/"
+// }]
+// let value1 = document.getElementById("pokemon")
+// for (let i = 0; i < data.length; i++) {
+//   console.log(data[i].name)
+//      let value2 = document.createElement("option")
+//   value2.innerText = data[i].name
+//   console.log(value2)
+//   value1.appendChild(value2) 
+// }
+function fetchAbilityNames() {
+  const url = 'https://pokeapi.co/api/v2/ability';
+
+  return fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`API returned status code ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      const abilities = data.results;
+      const value1 = document.getElementById("pokemon");
+
+      abilities.forEach(ability => {
+        const option = document.createElement("option");
+        option.innerText = ability.name;
+        value1.appendChild(option);
+      
+      });
+      
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      return null;
+    });
+}
+ fetchAbilityNames();
+
+
+
+
+  </script> 
+</body>
+</html>
