@@ -10,8 +10,12 @@
     <div class="container">
   <h2>Pokemon</h2>
   <select id="pokemon" name="Pokemon">
+</select> 
+<div class="err">
+  Name not Found
+  <span id="closeIcon">&times;</span>
+</div>
 
-  </select> 
   </div>
   <script>
 //     let name=document.getElementById("pokemon")
@@ -86,38 +90,50 @@
 //   console.log(value2)
 //   value1.appendChild(value2) 
 // }
+
 function fetchAbilityNames() {
-  const url = 'https://pokeapi.co/api/v2/ability';
+ 
+  const url = 'https://pokeapi.co/api/v2/ability1';
 
   return fetch(url)
     .then(response => {
       if (!response.ok) {
         throw new Error(`API returned status code ${response.status}`);
+      
+      // console.log(response.status)
       }
+      // console.log(response.status)
       return response.json();
+      alert("not found");
+      
     })
     .then(data => {
-      const abilities = data.results;
+      
       const value1 = document.getElementById("pokemon");
-
+      const abilities = data.results;
       abilities.forEach(ability => {
         const option = document.createElement("option");
         option.innerText = ability.name;
         value1.appendChild(option);
+        
       
       });
       
     })
     .catch(error => {
-      console.error('Error:', error);
+      // console.error('Error:', error);
+      let errors=document.querySelector(".err")
+      // console.log(errors)
+      errors.style.display ="block";
+      let close = document.querySelector("#closeIcon");
+close.addEventListener("click", () => {
+ errors.style.display="none";
+});
       return null;
     });
 }
+
  fetchAbilityNames();
-
-
-
-
-  </script> 
+</script> 
 </body>
 </html>
